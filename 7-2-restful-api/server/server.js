@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5174;
 app.use(cors());              
 app.use(express.json());
 
-await connectDB();
+await connectDB(process.env.MONGO_URL);
 // api/songs (Read all songs)
 app.get("/api/songs", async (req, res) => {
   const rows = await Song.find().sort({ createdAt: -1 });
